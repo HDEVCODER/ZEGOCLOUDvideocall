@@ -98,7 +98,7 @@ class _VideoCallPageState extends State<VideoCallPage> {
                         style: ElevatedButton.styleFrom(
                             shape: const CircleBorder(),
                             padding: const EdgeInsets.all(10),
-                            primary: Colors.black26),
+                            backgroundColor: Colors.black26),
                         child: Icon(_micEnable ? Icons.mic : Icons.mic_off,
                             size: 28),
                         onPressed: () {
@@ -112,7 +112,7 @@ class _VideoCallPageState extends State<VideoCallPage> {
                         style: ElevatedButton.styleFrom(
                             shape: const CircleBorder(),
                             padding: const EdgeInsets.all(10),
-                            primary: Colors.red),
+                            backgroundColor: Colors.red),
                         child: const Icon(Icons.call_end, size: 28),
                         onPressed: () {
                           ZegoExpressManager.shared.leaveRoom();
@@ -133,7 +133,7 @@ class _VideoCallPageState extends State<VideoCallPage> {
                         style: ElevatedButton.styleFrom(
                             shape: const CircleBorder(),
                             padding: const EdgeInsets.all(10),
-                            primary: Colors.black26),
+                            backgroundColor: Colors.black26),
                         child: Icon(
                             _cameraEnable
                                 ? Icons.camera_alt

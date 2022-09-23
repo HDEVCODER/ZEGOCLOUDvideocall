@@ -59,8 +59,7 @@ class _AudioCallPageState extends State<AudioCallPage> {
       // Join room and wait for other...
       if (!_joinedRoom) {
         // We are making a Video Call example so we use the options with publish video/audio and auto play video/audio
-        ZegoExpressManager.shared
-            .joinRoom(roomID, ZegoUser(userID, userID), [
+        ZegoExpressManager.shared.joinRoom(roomID, ZegoUser(userID, userID), [
           ZegoMediaOption.publishLocalAudio,
           ZegoMediaOption.autoPlayAudio,
         ]);
@@ -95,9 +94,9 @@ class _AudioCallPageState extends State<AudioCallPage> {
                     style: ElevatedButton.styleFrom(
                         shape: const CircleBorder(),
                         padding: const EdgeInsets.all(10),
-                        primary: Colors.black26),
+                        backgroundColor: Colors.black26),
                     child:
-                    Icon(_micEnable ? Icons.mic : Icons.mic_off, size: 28),
+                        Icon(_micEnable ? Icons.mic : Icons.mic_off, size: 28),
                     onPressed: () {
                       ZegoExpressManager.shared.enableMic(!_micEnable);
                       setState(() {
@@ -109,7 +108,7 @@ class _AudioCallPageState extends State<AudioCallPage> {
                     style: ElevatedButton.styleFrom(
                         shape: const CircleBorder(),
                         padding: const EdgeInsets.all(10),
-                        primary: Colors.red),
+                        backgroundColor: Colors.red),
                     child: const Icon(Icons.call_end, size: 28),
                     onPressed: () {
                       ZegoExpressManager.shared.leaveRoom();
@@ -124,11 +123,9 @@ class _AudioCallPageState extends State<AudioCallPage> {
                     style: ElevatedButton.styleFrom(
                         shape: const CircleBorder(),
                         padding: const EdgeInsets.all(10),
-                        primary: Colors.black26),
+                        backgroundColor: Colors.black26),
                     child: Icon(
-                        _speakerEnable
-                            ? Icons.speaker_phone
-                            : Icons.headphones,
+                        _speakerEnable ? Icons.speaker_phone : Icons.headphones,
                         size: 28),
                     onPressed: () {
                       ZegoExpressManager.shared.enableSpeaker(!_speakerEnable);
