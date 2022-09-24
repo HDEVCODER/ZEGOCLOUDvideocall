@@ -21,16 +21,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // TODO Test data
+  // change by using your app id from your console
   final int appID = 2138559609;
   final formKey = GlobalKey<FormState>();
   final String appSign =
       'c25b01b85bd79e719e6ae82179084df23f9d3ecb94cf7c014e12d8663453553c';
-  final RoomIDController = TextEditingController();
+  final TextEditingController roomIDController = TextEditingController();
 
   /// Check the permission or ask for the user if not grant
-  ///
-  /// TODO Copy to your project
+
   Future<bool> requestPermission(ZegoMediaOptions options) async {
     if (options.contains(ZegoMediaOption.publishLocalAudio)) {
       PermissionStatus microphoneStatus = await Permission.microphone.request();
@@ -126,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                 content: Form(
                   key: formKey,
                   child: TextFormField(
-                    controller: RoomIDController,
+                    controller: roomIDController,
                     keyboardType: TextInputType.number,
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     decoration: const InputDecoration(
@@ -148,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () {
                         Navigator.pop(context);
                         setState(() {
-                          RoomIDController.clear();
+                          roomIDController.clear();
                         });
                       },
                       child: const Text('Cancle')),
@@ -160,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                         if (formKey.currentState!.validate()) {
                           Navigator.pop(context);
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text('${RoomIDController.text} Joining'),
+                            content: Text('${roomIDController.text} Joining'),
                             backgroundColor: Colors.green,
                           ));
 
@@ -170,14 +169,14 @@ class _HomePageState extends State<HomePage> {
                           Navigator.pushReplacementNamed(
                               context, '/video_call_page',
                               arguments:
-                                  await getJoinRoomArgs(RoomIDController.text));
+                                  await getJoinRoomArgs(roomIDController.text));
                           setState(() {
                             calls.add(Call(
                                 color: Color(
                                         (math.Random().nextDouble() * 0xFFFFFF)
                                             .toInt())
                                     .withOpacity(1.0),
-                                number: RoomIDController.text,
+                                number: roomIDController.text,
                                 date: DateTime.now().year.toString() +
                                     "/" +
                                     DateTime.now().month.toString() +
