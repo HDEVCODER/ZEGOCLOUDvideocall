@@ -12,7 +12,7 @@ class ZegoParticipant {
   Widget view = Container();
   bool camera = false;
   bool mic = false;
-  ZegoStreamQualityLevel network = ZegoStreamQualityLevel.Excellent;
+  ZegoStreamQualityLevel network = ZegoStreamQualityLevel.Medium;
 
   ZegoParticipant(this.userID, this.name);
 }
@@ -76,7 +76,7 @@ class ZegoExpressManager {
   bool _isPlayingStream = false;
   ZegoParticipant _localParticipant = ZegoParticipant("", "");
   final UserIDParticipantMap _participantDic = {};
- final StreamIDParticipantMap _streamDic = {};
+  final StreamIDParticipantMap _streamDic = {};
   String _roomID = "";
   ZegoMediaOptions _mediaOptions = [
     ZegoMediaOption.autoPlayAudio,

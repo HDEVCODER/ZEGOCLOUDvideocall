@@ -2,9 +2,6 @@ import 'package:easy_example_flutter/zego_express_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:zego_express_engine/zego_express_engine.dart';
 
-/// CallPage use for display the Caller Video view and the Callee Video view
-///
-/// TODO You can copy the completed class to your project
 class VideoCallPage extends StatefulWidget {
   const VideoCallPage({Key? key}) : super(key: key);
 
@@ -41,6 +38,7 @@ class _VideoCallPageState extends State<VideoCallPage> {
         (ZegoDeviceUpdateType updateType, String userID, String roomID) {};
   }
 
+  late var roomID;
   @override
   void didChangeDependencies() {
     // Read data from HomePage
@@ -49,7 +47,7 @@ class _VideoCallPageState extends State<VideoCallPage> {
       // Read arguments
       Map<String, String> obj = settings.arguments as Map<String, String>;
       var userID = obj['userID'] ?? "";
-      var roomID = obj['roomID'] ?? "";
+      roomID = obj['roomID'] ?? "";
       var appID = int.parse(obj['appID'] ?? "0");
       var appSign = obj['appSign'] ?? "";
 
@@ -85,7 +83,18 @@ class _VideoCallPageState extends State<VideoCallPage> {
             Positioned(
                 top: 100,
                 right: 16,
-                child: SizedBox(width: 114, height: 170, child: _smallView)),
+                child: Row(
+                  children: [
+                    Text(
+                      "RoomID: $roomID",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    const SizedBox(
+                      width: 60,
+                    ),
+                    SizedBox(width: 114, height: 170, child: _smallView),
+                  ],
+                )),
             Positioned(
                 bottom: 100,
                 left: 0,
